@@ -8,11 +8,18 @@ module.exports = {
     bindHelpers(browser);
     bindComponents(browser);
 
-    var baseUrl = browser.launchUrl || 'http://ca-prod.contentanalyticsinc.com';
+    var baseUrl = browser.launch_url;
 
 
      browser
-      .components.login("https://ca-prod.contentanalyticsinc.com")
+      .url(`${baseUrl}/auth/login`, `Login`)
+      .click(`#identity`, `CSS`, `Click element`)
+      .changeInput(`#identity`, `CSS`, browser.globals.userName, `Change input`)
+      .click(`div > div:nth-of-type(2)`, `CSS`, `Click element`)
+      .click(`#password`, `CSS`, `Click element`)
+      .changeInput(`#password`, `CSS`, browser.globals.passWord, `Change input`)
+      .click(`div > div > form > div:nth-of-type(2) > div`, `CSS`, `Click element`)
+      .click(`[name=submit]`, `CSS`, `Click element`)
       .pause(4000)
   },
 
@@ -21,7 +28,7 @@ module.exports = {
     bindHelpers(browser);
     bindComponents(browser);
 
-    var baseUrl = browser.launchUrl || `https://ca-prod.contentanalyticsinc.com`;
+    var baseUrl = browser.launch_url;
 
 
      browser
@@ -46,7 +53,7 @@ module.exports = {
     bindHelpers(browser);
     bindComponents(browser);
 
-    var baseUrl = browser.launchUrl || `https://ca-prod.contentanalyticsinc.com`;
+    var baseUrl = browser.launch_url;
 
 
      browser
@@ -73,20 +80,6 @@ module.exports = {
 function bindComponents(browser) {
 
   browser.components = {};
-
-
-
-  browser.components.login = function(baseUrl) {
-    return browser
-      .url(`${baseUrl}/auth/login`, `Login`)
-      .click(`#identity`, `CSS`, `Click element`)
-      .changeInput(`#identity`, `CSS`, `USERNAME`, `Change input`)
-      .click(`div > div:nth-of-type(2)`, `CSS`, `Click element`)
-      .click(`#password`, `CSS`, `Click element`)
-      .changeInput(`#password`, `CSS`, `PASSWORD`, `Change input`)
-      .click(`div > div > form > div:nth-of-type(2) > div`, `CSS`, `Click element`)
-      .click(`[name=submit]`, `CSS`, `Click element`)
-  };
 
 
 }
