@@ -8,7 +8,7 @@ module.exports = {
     bindHelpers(browser);
     bindComponents(browser);
 
-    var baseUrl = browser.launchUrl || 'http://ca-pro.contentanalyticsinc.com';
+    var baseUrl = browser.launchUrl || 'http://ca-prod.contentanalyticsinc.com';
 
 
      browser
@@ -16,9 +16,7 @@ module.exports = {
       .pause(4000)
   },
 
-
-
-  "Page 1 Share of Search": function(browser) {
+"Page 1 Share of Search": function(browser) {
 
     bindHelpers(browser);
     bindComponents(browser);
@@ -29,16 +27,16 @@ module.exports = {
      browser
       .url(`${baseUrl}/assess/brand_report_ranking`)
       .pause(4000)
-      .click(`div:nth-of-type(2) > div > div:nth-of-type(3) > div:nth-of-type(3) > div:nth-of-type(2) > aside > div > div`, `CSS`, `Click element`)
+      .click(`#main_container_ID > div.main_content > div > div.content_editor_scorecard > div.content_editor_inner.findability-open > div.tab-content.ranking-page.overflow-visible > div > div.findable-report-container.filters-block-shown > div.insights-overview > div.insights-groups > aside:nth-child(1) > div > div:nth-child(1)`)
       .pause(5000)
-      .click(`#lc-cbx-keywords_filter_block-96`, `CSS`, `Click element`)
+      .click(`#lc-cbx-keywords_filter_block-96`, `CSS`, `Click Search Term Group`)
       .pause(500)
-      .click(`#lc-cbx-sites_filter_block-7`, `CSS`, `Click element`)
-      .click(`#lc-cbx-brand_filter_block-0`, `CSS`, `Click element`)
+      .click(`#lc-cbx-sites_filter_block-7`, `CSS`, `Click Retailers`)
+      .click(`#lc-cbx-brand_filter_block-0`, `CSS`, `Click Brands`)
       .pause(1000)
-      .click(`#reportrange`, `CSS`, `Click element`)
+      .click(`#reportrange`, `CSS`, `Click Date Selector`)
       .pause(500)
-      .click(`div:nth-of-type(19) > div > ul > li`, `CSS`, `Click element`)
+      .click(`div:nth-of-type(19) > div > ul > li`, `CSS`, `Click Today`)
       .elementPresent(`.share-of-search-table-container`, `CSS`, `Results Table is loading`)
       .assert.visible(".share-of-search-table-container",'Results Table is visible')
   },
